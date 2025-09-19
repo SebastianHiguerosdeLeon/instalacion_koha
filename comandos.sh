@@ -60,7 +60,7 @@ setup_repository(){
 }
 
 # Instalacion de koha
-install_koha() {
+instalacion_koha() {
     print_step "Instalando Koha y dependencias Perl..."
     
     # Instalar Koha
@@ -164,7 +164,7 @@ main(){
     check_root
     actualizar_sistema
     setup_repository
-    install_koha
+    instalacion_koha
     configurar_puertos
     configurar_apache
     crear_db
