@@ -89,7 +89,7 @@ configurar_puertos(){
     print_step "Configurando puertos para koha..."
     cat > /etc/koha/koha-sites.conf << 'EOF'
 #configuracion de sitios de koha
-DOMAIN=".myDNSname.org"
+DOMAIN="koha.farusac.edu.gt"
 INTRAPORT="8080"
 INTRAPREFIX=""
 INTRASUFFIX="-intra"
