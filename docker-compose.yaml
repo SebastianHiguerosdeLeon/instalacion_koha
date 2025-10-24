@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+    koha:
+        image: sebastianhigueros/instalacion_koha:latest
+        container_name: container_koha
+        ports:
+            - '80:80'
+            - '8080:8080'
+        build: .
+        depends_on:
+            db:
+                condition: service_healthy
+        environment:
+            - KOHA_INSTANCE=koha_biblioteca
+            - KOHA_DOMAIN=koha.local
+            - DB_HOST=db
+            - DB_PORT=3306
+            - DB_ROOT_PASSWORD=koha_biblioteca
+            - KOHA_DB_PASSWORD=koha_password
+        volumes:
+            - koha-data:/var/lib/koha
+            - koha-config:/etc/koha
+        restart: unless-stopped
+        networks:
+            - koha-network
+    db:
+        image: mariadb:10.11
+        container_name: koha_db
+        environment:
+            - MYSQL_ROOT_PASSWORD=koha_root_password
+            - MYSQL_DATABASE=koha_biblioteca
+            - MYSQL_USER=koha_biblioteca
+            - MYSQL_PASSWORD=koha_password
+            - MYSQL_CHARACTER_SET_SERVER=utf8mb4
+            - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
+        volumes:
+            - db-data:/var/lib/mysql
+        ports:
+            - '3306:3306'
+        restart: unless-stopped
+        command: 
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_unicode_ci
+            - --max_allowed_packet=64M
+            - --innodb_buffer_pool_size=512M
+        healthcheck:
+            test: ['CMD', 'mysqladmin','ping','-h','localhost','-p koha_root_password']
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        networks:
+            - koha-network
+        
+volumes:
+  koha-data:
+    driver: local
+  koha-config:
+    driver: local
+  db-data:
+    driver: local
+
+networks:
+  koha-network:
+    driver: bridge
