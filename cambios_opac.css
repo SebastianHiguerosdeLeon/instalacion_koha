@@ -1,0 +1,55 @@
+/*
+LibraryName: Biblioteca FARUSAC
+OpacFavicon: /opac-tmpl/bootstrap/images/escudo.ico
+OpacKohaUrl: No mostrar
+*/
+
+/*Esto se ingresa en OpacUsersCSS*/
+#notloggedin{
+  display:flex;
+}
+
+#carrusel {
+  width:700px;
+  height: 700px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  object-fit:contain;
+}
+
+#carrusel-logged {
+  height: 700px;
+  overflow:hidden;
+  object-fit:contain;
+}
+
+.row {
+  flex: 0 0 auto;
+}
+#login{
+  width: 700px;
+  height: 400px;
+}
+
+#opac-main-search {
+  background-color: rgb(25, 41, 73) !important;
+  border-radius: 10px;
+}
+#searchsubmit, #backtotop, .btn-primary {
+  background-color: rgb(255, 237, 0);
+  border-color: rgb(255, 237, 0);
+}
+
+#searchsubmit:hover , #backtotop:hover, .btn-primary:hover{
+  background-color: rgb(255, 237, 0);
+  border-color: rgb(245, 229, 8);
+}
+
+.fa-search, .fa-arrow-up, .btn-primary {
+	color: rgb(1, 12, 78)!important;
+}
+
+#logo {
+ 	background-image: url('http://192.168.20.31:80/opac-tmpl/bootstrap/images/logo_farusac.png');
+  	background-size: contain;
+}

@@ -1,0 +1,10 @@
+/*IntranetFavicon: /intranet-tmpl/prog/img/escudo.ico*/
+/* estos estilos se ingresan en el apartado IntranetUserCSS*/
+#login h1{
+  background-image: url('http://192.168.20.31:8080/intranet-tmpl/prog/img/logo_farusac.jpeg');
+  background-size: contain;
+}
+
+.navbar-dark{
+  background-color: rgb(25, 41, 73); 
+}
